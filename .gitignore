@@ -1,3 +1,5 @@
+!.gitignore
 .idea
 composer.lock
+README.md
 *.log
