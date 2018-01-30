@@ -5,6 +5,6 @@ class Index
 {
     public function index()
     {
-        echo 23567;
+        echo 'ok';
     }
 }
