@@ -23,11 +23,11 @@ require.config({
   },
 });
 
-require(['jquery','layui'],function(){
-   layui.config({dir:baseUrl+'../plugs/layui/'});
+require(['jquery','layui','xadmin'],function(){
+   layui.config({dir: baseUrl+'../plugs/layui/'});
    layui.use(['layer','form'],function(){
        window.layer = layui.layer;
-       window.form = layui.form();
+       window.form = layui.form;
    });
 
 });

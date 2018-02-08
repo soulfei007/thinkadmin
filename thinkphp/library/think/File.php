@@ -128,7 +128,7 @@ class File extends SplFileObject
         if (is_dir($path)) {
             return true;
         }
-
+        
         if (mkdir($path, 0755, true)) {
             return true;
         } else {
