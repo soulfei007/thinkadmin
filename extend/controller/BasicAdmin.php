@@ -1,20 +1,39 @@
 <?php
-namespace extend\controller;
+namespace controller;
+use think\Db;
 use think\Controller;
+use think\Loader;
 
 class BasicAdmin extends Controller{
 
-   /*
-   是否验证
-    */
+   //是否验证
    public $validate = false;
 
-   protected function _add( $obj, $datas ){
+   public $table ;
+
+   protected function _form( $dbQuery=null, $tplFile='', $data =[]){
+      $db = ($dbQuery)?$dbQuery:Db::name($this->table);
       if( $this->request->isPost() ){
-          $obj = new $obj;
+      	 if( $data ){
+            
+      	 }else{
+      	   $datas = $this->request->post();
+           $tableField = $db->getTableFields(['table'=>$this->table]);
+           foreach( $tableField as $k => $v ){ 
+              if( isset($datas[$v]) ){
+              	$allowDatas[$v] = $datas[$v];
+              }
+           }
+      	 }
       }
+   }
+
+   private function _check(){
+
+
 
    }
 
 
 }
+

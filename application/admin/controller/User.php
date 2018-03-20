@@ -1,14 +1,14 @@
 <?php
 namespace app\admin\controller;
-use think\Controller;
+use controller\BasicAdmin;
 use think\Db;
-use think\Loader;
-use app\admin\model\User;
 
-class Admin extends Controller{
+
+
+class User extends BasicAdmin{
 
 	public function add(){
-	   if( $this->request->isPost() ){
+	   /*if( $this->request->isPost() ){
           $data['username'] = trim(input('post.username'));
           $data['email'] = trim(input('post.email'));
           $data['salt'] = rand(100,9999);
@@ -22,11 +22,25 @@ class Admin extends Controller{
           }else{
           	$user = new User($data);
           	$res = $user->allowField(true)->save(); 
-          	dump($res);
+          	if($res){
+          	  $this->success('添加用户成功');
+          	}
           }     
 	   }else{
           return $this->fetch('');
-	   }
+	   }*/
+	   $this->table = 'xy_user';
+	   $this->_form();
+	   return $this->fetch('');
+	}
+
+	public function lst(){
+      $user = Db::name('user')->select();
+      if( $user ){
+      	$this->assign('data',$user);
+        return $this->fetch('');
+      }
+      
 	}
 
 }
